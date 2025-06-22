@@ -1,0 +1,1109 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements FIM
+Rule 2     statement -> type ID ATRIB expression
+Rule 3     type -> INT
+Rule 4     type -> CHAR
+Rule 5     statements -> statements statement
+Rule 6     statements -> statement
+Rule 7     statement -> ID ATRIB expression
+Rule 8     statement -> PRINT expression
+Rule 9     statement -> INPUT LPAREN RPAREN
+Rule 10    statement -> IF LPAREN condition RPAREN block else_clause
+Rule 11    block -> LBRACE statements RBRACE
+Rule 12    else_clause -> ELSE block
+Rule 13    else_clause -> empty
+Rule 14    expression -> expression SOMA expression
+Rule 15    expression -> expression SUB expression
+Rule 16    expression -> expression MULT expression
+Rule 17    expression -> expression DIV expression
+Rule 18    expression -> LPAREN expression RPAREN
+Rule 19    expression -> NUM
+Rule 20    expression -> FLOAT
+Rule 21    expression -> STRING
+Rule 22    expression -> CHAR_LITERAL
+Rule 23    expression -> ID
+Rule 24    condition -> expression relational_operator expression
+Rule 25    relational_operator -> EQ
+Rule 26    relational_operator -> NEQ
+Rule 27    relational_operator -> LT
+Rule 28    relational_operator -> GT
+Rule 29    relational_operator -> LTE
+Rule 30    relational_operator -> GTE
+Rule 31    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ATRIB                : 2 7
+CHAR                 : 4
+CHAR_LITERAL         : 22
+COMMENT              : 
+DIV                  : 17
+ELSE                 : 12
+EQ                   : 25
+FIM                  : 1
+FLOAT                : 20
+GT                   : 28
+GTE                  : 30
+ID                   : 2 7 23
+IF                   : 10
+INPUT                : 9
+INT                  : 3
+LBRACE               : 11
+LPAREN               : 9 10 18
+LT                   : 27
+LTE                  : 29
+MULT                 : 16
+NEQ                  : 26
+NUM                  : 19
+PRINT                : 8
+RBRACE               : 11
+RPAREN               : 9 10 18
+SOMA                 : 14
+STRING               : 21
+SUB                  : 15
+error                : 
+
+Nonterminals, with rules where they appear
+
+block                : 10 12
+condition            : 10
+else_clause          : 10
+empty                : 13
+expression           : 2 7 8 14 14 15 15 16 16 17 17 18 24 24
+program              : 0
+relational_operator  : 24
+statement            : 5 6
+statements           : 1 5 11
+type                 : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements FIM
+    (5) statements -> . statements statement
+    (6) statements -> . statement
+    (2) statement -> . type ID ATRIB expression
+    (7) statement -> . ID ATRIB expression
+    (8) statement -> . PRINT expression
+    (9) statement -> . INPUT LPAREN RPAREN
+    (10) statement -> . IF LPAREN condition RPAREN block else_clause
+    (3) type -> . INT
+    (4) type -> . CHAR
+
+    ID              shift and go to state 5
+    PRINT           shift and go to state 6
+    INPUT           shift and go to state 7
+    IF              shift and go to state 8
+    INT             shift and go to state 9
+    CHAR            shift and go to state 10
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    type                           shift and go to state 4
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements . FIM
+    (5) statements -> statements . statement
+    (2) statement -> . type ID ATRIB expression
+    (7) statement -> . ID ATRIB expression
+    (8) statement -> . PRINT expression
+    (9) statement -> . INPUT LPAREN RPAREN
+    (10) statement -> . IF LPAREN condition RPAREN block else_clause
+    (3) type -> . INT
+    (4) type -> . CHAR
+
+    FIM             shift and go to state 11
+    ID              shift and go to state 5
+    PRINT           shift and go to state 6
+    INPUT           shift and go to state 7
+    IF              shift and go to state 8
+    INT             shift and go to state 9
+    CHAR            shift and go to state 10
+
+    statement                      shift and go to state 12
+    type                           shift and go to state 4
+
+state 3
+
+    (6) statements -> statement .
+
+    FIM             reduce using rule 6 (statements -> statement .)
+    ID              reduce using rule 6 (statements -> statement .)
+    PRINT           reduce using rule 6 (statements -> statement .)
+    INPUT           reduce using rule 6 (statements -> statement .)
+    IF              reduce using rule 6 (statements -> statement .)
+    INT             reduce using rule 6 (statements -> statement .)
+    CHAR            reduce using rule 6 (statements -> statement .)
+    RBRACE          reduce using rule 6 (statements -> statement .)
+
+
+state 4
+
+    (2) statement -> type . ID ATRIB expression
+
+    ID              shift and go to state 13
+
+
+state 5
+
+    (7) statement -> ID . ATRIB expression
+
+    ATRIB           shift and go to state 14
+
+
+state 6
+
+    (8) statement -> PRINT . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 15
+
+state 7
+
+    (9) statement -> INPUT . LPAREN RPAREN
+
+    LPAREN          shift and go to state 22
+
+
+state 8
+
+    (10) statement -> IF . LPAREN condition RPAREN block else_clause
+
+    LPAREN          shift and go to state 23
+
+
+state 9
+
+    (3) type -> INT .
+
+    ID              reduce using rule 3 (type -> INT .)
+
+
+state 10
+
+    (4) type -> CHAR .
+
+    ID              reduce using rule 4 (type -> CHAR .)
+
+
+state 11
+
+    (1) program -> statements FIM .
+
+    $end            reduce using rule 1 (program -> statements FIM .)
+
+
+state 12
+
+    (5) statements -> statements statement .
+
+    FIM             reduce using rule 5 (statements -> statements statement .)
+    ID              reduce using rule 5 (statements -> statements statement .)
+    PRINT           reduce using rule 5 (statements -> statements statement .)
+    INPUT           reduce using rule 5 (statements -> statements statement .)
+    IF              reduce using rule 5 (statements -> statements statement .)
+    INT             reduce using rule 5 (statements -> statements statement .)
+    CHAR            reduce using rule 5 (statements -> statements statement .)
+    RBRACE          reduce using rule 5 (statements -> statements statement .)
+
+
+state 13
+
+    (2) statement -> type ID . ATRIB expression
+
+    ATRIB           shift and go to state 24
+
+
+state 14
+
+    (7) statement -> ID ATRIB . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 25
+
+state 15
+
+    (8) statement -> PRINT expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    FIM             reduce using rule 8 (statement -> PRINT expression .)
+    ID              reduce using rule 8 (statement -> PRINT expression .)
+    PRINT           reduce using rule 8 (statement -> PRINT expression .)
+    INPUT           reduce using rule 8 (statement -> PRINT expression .)
+    IF              reduce using rule 8 (statement -> PRINT expression .)
+    INT             reduce using rule 8 (statement -> PRINT expression .)
+    CHAR            reduce using rule 8 (statement -> PRINT expression .)
+    RBRACE          reduce using rule 8 (statement -> PRINT expression .)
+    SOMA            shift and go to state 26
+    SUB             shift and go to state 27
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+
+state 16
+
+    (18) expression -> LPAREN . expression RPAREN
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 30
+
+state 17
+
+    (19) expression -> NUM .
+
+    SOMA            reduce using rule 19 (expression -> NUM .)
+    SUB             reduce using rule 19 (expression -> NUM .)
+    MULT            reduce using rule 19 (expression -> NUM .)
+    DIV             reduce using rule 19 (expression -> NUM .)
+    FIM             reduce using rule 19 (expression -> NUM .)
+    ID              reduce using rule 19 (expression -> NUM .)
+    PRINT           reduce using rule 19 (expression -> NUM .)
+    INPUT           reduce using rule 19 (expression -> NUM .)
+    IF              reduce using rule 19 (expression -> NUM .)
+    INT             reduce using rule 19 (expression -> NUM .)
+    CHAR            reduce using rule 19 (expression -> NUM .)
+    RBRACE          reduce using rule 19 (expression -> NUM .)
+    RPAREN          reduce using rule 19 (expression -> NUM .)
+    EQ              reduce using rule 19 (expression -> NUM .)
+    NEQ             reduce using rule 19 (expression -> NUM .)
+    LT              reduce using rule 19 (expression -> NUM .)
+    GT              reduce using rule 19 (expression -> NUM .)
+    LTE             reduce using rule 19 (expression -> NUM .)
+    GTE             reduce using rule 19 (expression -> NUM .)
+
+
+state 18
+
+    (20) expression -> FLOAT .
+
+    SOMA            reduce using rule 20 (expression -> FLOAT .)
+    SUB             reduce using rule 20 (expression -> FLOAT .)
+    MULT            reduce using rule 20 (expression -> FLOAT .)
+    DIV             reduce using rule 20 (expression -> FLOAT .)
+    FIM             reduce using rule 20 (expression -> FLOAT .)
+    ID              reduce using rule 20 (expression -> FLOAT .)
+    PRINT           reduce using rule 20 (expression -> FLOAT .)
+    INPUT           reduce using rule 20 (expression -> FLOAT .)
+    IF              reduce using rule 20 (expression -> FLOAT .)
+    INT             reduce using rule 20 (expression -> FLOAT .)
+    CHAR            reduce using rule 20 (expression -> FLOAT .)
+    RBRACE          reduce using rule 20 (expression -> FLOAT .)
+    RPAREN          reduce using rule 20 (expression -> FLOAT .)
+    EQ              reduce using rule 20 (expression -> FLOAT .)
+    NEQ             reduce using rule 20 (expression -> FLOAT .)
+    LT              reduce using rule 20 (expression -> FLOAT .)
+    GT              reduce using rule 20 (expression -> FLOAT .)
+    LTE             reduce using rule 20 (expression -> FLOAT .)
+    GTE             reduce using rule 20 (expression -> FLOAT .)
+
+
+state 19
+
+    (21) expression -> STRING .
+
+    SOMA            reduce using rule 21 (expression -> STRING .)
+    SUB             reduce using rule 21 (expression -> STRING .)
+    MULT            reduce using rule 21 (expression -> STRING .)
+    DIV             reduce using rule 21 (expression -> STRING .)
+    FIM             reduce using rule 21 (expression -> STRING .)
+    ID              reduce using rule 21 (expression -> STRING .)
+    PRINT           reduce using rule 21 (expression -> STRING .)
+    INPUT           reduce using rule 21 (expression -> STRING .)
+    IF              reduce using rule 21 (expression -> STRING .)
+    INT             reduce using rule 21 (expression -> STRING .)
+    CHAR            reduce using rule 21 (expression -> STRING .)
+    RBRACE          reduce using rule 21 (expression -> STRING .)
+    RPAREN          reduce using rule 21 (expression -> STRING .)
+    EQ              reduce using rule 21 (expression -> STRING .)
+    NEQ             reduce using rule 21 (expression -> STRING .)
+    LT              reduce using rule 21 (expression -> STRING .)
+    GT              reduce using rule 21 (expression -> STRING .)
+    LTE             reduce using rule 21 (expression -> STRING .)
+    GTE             reduce using rule 21 (expression -> STRING .)
+
+
+state 20
+
+    (22) expression -> CHAR_LITERAL .
+
+    SOMA            reduce using rule 22 (expression -> CHAR_LITERAL .)
+    SUB             reduce using rule 22 (expression -> CHAR_LITERAL .)
+    MULT            reduce using rule 22 (expression -> CHAR_LITERAL .)
+    DIV             reduce using rule 22 (expression -> CHAR_LITERAL .)
+    FIM             reduce using rule 22 (expression -> CHAR_LITERAL .)
+    ID              reduce using rule 22 (expression -> CHAR_LITERAL .)
+    PRINT           reduce using rule 22 (expression -> CHAR_LITERAL .)
+    INPUT           reduce using rule 22 (expression -> CHAR_LITERAL .)
+    IF              reduce using rule 22 (expression -> CHAR_LITERAL .)
+    INT             reduce using rule 22 (expression -> CHAR_LITERAL .)
+    CHAR            reduce using rule 22 (expression -> CHAR_LITERAL .)
+    RBRACE          reduce using rule 22 (expression -> CHAR_LITERAL .)
+    RPAREN          reduce using rule 22 (expression -> CHAR_LITERAL .)
+    EQ              reduce using rule 22 (expression -> CHAR_LITERAL .)
+    NEQ             reduce using rule 22 (expression -> CHAR_LITERAL .)
+    LT              reduce using rule 22 (expression -> CHAR_LITERAL .)
+    GT              reduce using rule 22 (expression -> CHAR_LITERAL .)
+    LTE             reduce using rule 22 (expression -> CHAR_LITERAL .)
+    GTE             reduce using rule 22 (expression -> CHAR_LITERAL .)
+
+
+state 21
+
+    (23) expression -> ID .
+
+    SOMA            reduce using rule 23 (expression -> ID .)
+    SUB             reduce using rule 23 (expression -> ID .)
+    MULT            reduce using rule 23 (expression -> ID .)
+    DIV             reduce using rule 23 (expression -> ID .)
+    FIM             reduce using rule 23 (expression -> ID .)
+    ID              reduce using rule 23 (expression -> ID .)
+    PRINT           reduce using rule 23 (expression -> ID .)
+    INPUT           reduce using rule 23 (expression -> ID .)
+    IF              reduce using rule 23 (expression -> ID .)
+    INT             reduce using rule 23 (expression -> ID .)
+    CHAR            reduce using rule 23 (expression -> ID .)
+    RBRACE          reduce using rule 23 (expression -> ID .)
+    RPAREN          reduce using rule 23 (expression -> ID .)
+    EQ              reduce using rule 23 (expression -> ID .)
+    NEQ             reduce using rule 23 (expression -> ID .)
+    LT              reduce using rule 23 (expression -> ID .)
+    GT              reduce using rule 23 (expression -> ID .)
+    LTE             reduce using rule 23 (expression -> ID .)
+    GTE             reduce using rule 23 (expression -> ID .)
+
+
+state 22
+
+    (9) statement -> INPUT LPAREN . RPAREN
+
+    RPAREN          shift and go to state 31
+
+
+state 23
+
+    (10) statement -> IF LPAREN . condition RPAREN block else_clause
+    (24) condition -> . expression relational_operator expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    condition                      shift and go to state 32
+    expression                     shift and go to state 33
+
+state 24
+
+    (2) statement -> type ID ATRIB . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 34
+
+state 25
+
+    (7) statement -> ID ATRIB expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    FIM             reduce using rule 7 (statement -> ID ATRIB expression .)
+    ID              reduce using rule 7 (statement -> ID ATRIB expression .)
+    PRINT           reduce using rule 7 (statement -> ID ATRIB expression .)
+    INPUT           reduce using rule 7 (statement -> ID ATRIB expression .)
+    IF              reduce using rule 7 (statement -> ID ATRIB expression .)
+    INT             reduce using rule 7 (statement -> ID ATRIB expression .)
+    CHAR            reduce using rule 7 (statement -> ID ATRIB expression .)
+    RBRACE          reduce using rule 7 (statement -> ID ATRIB expression .)
+    SOMA            shift and go to state 26
+    SUB             shift and go to state 27
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+
+state 26
+
+    (14) expression -> expression SOMA . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 35
+
+state 27
+
+    (15) expression -> expression SUB . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 36
+
+state 28
+
+    (16) expression -> expression MULT . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 37
+
+state 29
+
+    (17) expression -> expression DIV . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 38
+
+state 30
+
+    (18) expression -> LPAREN expression . RPAREN
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    RPAREN          shift and go to state 39
+    SOMA            shift and go to state 26
+    SUB             shift and go to state 27
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+
+state 31
+
+    (9) statement -> INPUT LPAREN RPAREN .
+
+    FIM             reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    ID              reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    PRINT           reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    INPUT           reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    IF              reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    INT             reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    CHAR            reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+    RBRACE          reduce using rule 9 (statement -> INPUT LPAREN RPAREN .)
+
+
+state 32
+
+    (10) statement -> IF LPAREN condition . RPAREN block else_clause
+
+    RPAREN          shift and go to state 40
+
+
+state 33
+
+    (24) condition -> expression . relational_operator expression
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+    (25) relational_operator -> . EQ
+    (26) relational_operator -> . NEQ
+    (27) relational_operator -> . LT
+    (28) relational_operator -> . GT
+    (29) relational_operator -> . LTE
+    (30) relational_operator -> . GTE
+
+    SOMA            shift and go to state 26
+    SUB             shift and go to state 27
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+    EQ              shift and go to state 42
+    NEQ             shift and go to state 43
+    LT              shift and go to state 44
+    GT              shift and go to state 45
+    LTE             shift and go to state 46
+    GTE             shift and go to state 47
+
+    relational_operator            shift and go to state 41
+
+state 34
+
+    (2) statement -> type ID ATRIB expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    FIM             reduce using rule 2 (statement -> type ID ATRIB expression .)
+    ID              reduce using rule 2 (statement -> type ID ATRIB expression .)
+    PRINT           reduce using rule 2 (statement -> type ID ATRIB expression .)
+    INPUT           reduce using rule 2 (statement -> type ID ATRIB expression .)
+    IF              reduce using rule 2 (statement -> type ID ATRIB expression .)
+    INT             reduce using rule 2 (statement -> type ID ATRIB expression .)
+    CHAR            reduce using rule 2 (statement -> type ID ATRIB expression .)
+    RBRACE          reduce using rule 2 (statement -> type ID ATRIB expression .)
+    SOMA            shift and go to state 26
+    SUB             shift and go to state 27
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+
+state 35
+
+    (14) expression -> expression SOMA expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    SOMA            reduce using rule 14 (expression -> expression SOMA expression .)
+    SUB             reduce using rule 14 (expression -> expression SOMA expression .)
+    FIM             reduce using rule 14 (expression -> expression SOMA expression .)
+    ID              reduce using rule 14 (expression -> expression SOMA expression .)
+    PRINT           reduce using rule 14 (expression -> expression SOMA expression .)
+    INPUT           reduce using rule 14 (expression -> expression SOMA expression .)
+    IF              reduce using rule 14 (expression -> expression SOMA expression .)
+    INT             reduce using rule 14 (expression -> expression SOMA expression .)
+    CHAR            reduce using rule 14 (expression -> expression SOMA expression .)
+    RBRACE          reduce using rule 14 (expression -> expression SOMA expression .)
+    RPAREN          reduce using rule 14 (expression -> expression SOMA expression .)
+    EQ              reduce using rule 14 (expression -> expression SOMA expression .)
+    NEQ             reduce using rule 14 (expression -> expression SOMA expression .)
+    LT              reduce using rule 14 (expression -> expression SOMA expression .)
+    GT              reduce using rule 14 (expression -> expression SOMA expression .)
+    LTE             reduce using rule 14 (expression -> expression SOMA expression .)
+    GTE             reduce using rule 14 (expression -> expression SOMA expression .)
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+  ! MULT            [ reduce using rule 14 (expression -> expression SOMA expression .) ]
+  ! DIV             [ reduce using rule 14 (expression -> expression SOMA expression .) ]
+  ! SOMA            [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+
+
+state 36
+
+    (15) expression -> expression SUB expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    SOMA            reduce using rule 15 (expression -> expression SUB expression .)
+    SUB             reduce using rule 15 (expression -> expression SUB expression .)
+    FIM             reduce using rule 15 (expression -> expression SUB expression .)
+    ID              reduce using rule 15 (expression -> expression SUB expression .)
+    PRINT           reduce using rule 15 (expression -> expression SUB expression .)
+    INPUT           reduce using rule 15 (expression -> expression SUB expression .)
+    IF              reduce using rule 15 (expression -> expression SUB expression .)
+    INT             reduce using rule 15 (expression -> expression SUB expression .)
+    CHAR            reduce using rule 15 (expression -> expression SUB expression .)
+    RBRACE          reduce using rule 15 (expression -> expression SUB expression .)
+    RPAREN          reduce using rule 15 (expression -> expression SUB expression .)
+    EQ              reduce using rule 15 (expression -> expression SUB expression .)
+    NEQ             reduce using rule 15 (expression -> expression SUB expression .)
+    LT              reduce using rule 15 (expression -> expression SUB expression .)
+    GT              reduce using rule 15 (expression -> expression SUB expression .)
+    LTE             reduce using rule 15 (expression -> expression SUB expression .)
+    GTE             reduce using rule 15 (expression -> expression SUB expression .)
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+  ! MULT            [ reduce using rule 15 (expression -> expression SUB expression .) ]
+  ! DIV             [ reduce using rule 15 (expression -> expression SUB expression .) ]
+  ! SOMA            [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+
+
+state 37
+
+    (16) expression -> expression MULT expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    SOMA            reduce using rule 16 (expression -> expression MULT expression .)
+    SUB             reduce using rule 16 (expression -> expression MULT expression .)
+    MULT            reduce using rule 16 (expression -> expression MULT expression .)
+    DIV             reduce using rule 16 (expression -> expression MULT expression .)
+    FIM             reduce using rule 16 (expression -> expression MULT expression .)
+    ID              reduce using rule 16 (expression -> expression MULT expression .)
+    PRINT           reduce using rule 16 (expression -> expression MULT expression .)
+    INPUT           reduce using rule 16 (expression -> expression MULT expression .)
+    IF              reduce using rule 16 (expression -> expression MULT expression .)
+    INT             reduce using rule 16 (expression -> expression MULT expression .)
+    CHAR            reduce using rule 16 (expression -> expression MULT expression .)
+    RBRACE          reduce using rule 16 (expression -> expression MULT expression .)
+    RPAREN          reduce using rule 16 (expression -> expression MULT expression .)
+    EQ              reduce using rule 16 (expression -> expression MULT expression .)
+    NEQ             reduce using rule 16 (expression -> expression MULT expression .)
+    LT              reduce using rule 16 (expression -> expression MULT expression .)
+    GT              reduce using rule 16 (expression -> expression MULT expression .)
+    LTE             reduce using rule 16 (expression -> expression MULT expression .)
+    GTE             reduce using rule 16 (expression -> expression MULT expression .)
+
+  ! SOMA            [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+  ! MULT            [ shift and go to state 28 ]
+  ! DIV             [ shift and go to state 29 ]
+
+
+state 38
+
+    (17) expression -> expression DIV expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    SOMA            reduce using rule 17 (expression -> expression DIV expression .)
+    SUB             reduce using rule 17 (expression -> expression DIV expression .)
+    MULT            reduce using rule 17 (expression -> expression DIV expression .)
+    DIV             reduce using rule 17 (expression -> expression DIV expression .)
+    FIM             reduce using rule 17 (expression -> expression DIV expression .)
+    ID              reduce using rule 17 (expression -> expression DIV expression .)
+    PRINT           reduce using rule 17 (expression -> expression DIV expression .)
+    INPUT           reduce using rule 17 (expression -> expression DIV expression .)
+    IF              reduce using rule 17 (expression -> expression DIV expression .)
+    INT             reduce using rule 17 (expression -> expression DIV expression .)
+    CHAR            reduce using rule 17 (expression -> expression DIV expression .)
+    RBRACE          reduce using rule 17 (expression -> expression DIV expression .)
+    RPAREN          reduce using rule 17 (expression -> expression DIV expression .)
+    EQ              reduce using rule 17 (expression -> expression DIV expression .)
+    NEQ             reduce using rule 17 (expression -> expression DIV expression .)
+    LT              reduce using rule 17 (expression -> expression DIV expression .)
+    GT              reduce using rule 17 (expression -> expression DIV expression .)
+    LTE             reduce using rule 17 (expression -> expression DIV expression .)
+    GTE             reduce using rule 17 (expression -> expression DIV expression .)
+
+  ! SOMA            [ shift and go to state 26 ]
+  ! SUB             [ shift and go to state 27 ]
+  ! MULT            [ shift and go to state 28 ]
+  ! DIV             [ shift and go to state 29 ]
+
+
+state 39
+
+    (18) expression -> LPAREN expression RPAREN .
+
+    SOMA            reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    SUB             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    MULT            reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    DIV             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    FIM             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    ID              reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    PRINT           reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    INPUT           reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    IF              reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    INT             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    CHAR            reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    RBRACE          reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    EQ              reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    NEQ             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    LT              reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    GT              reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    LTE             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+    GTE             reduce using rule 18 (expression -> LPAREN expression RPAREN .)
+
+
+state 40
+
+    (10) statement -> IF LPAREN condition RPAREN . block else_clause
+    (11) block -> . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 49
+
+    block                          shift and go to state 48
+
+state 41
+
+    (24) condition -> expression relational_operator . expression
+    (14) expression -> . expression SOMA expression
+    (15) expression -> . expression SUB expression
+    (16) expression -> . expression MULT expression
+    (17) expression -> . expression DIV expression
+    (18) expression -> . LPAREN expression RPAREN
+    (19) expression -> . NUM
+    (20) expression -> . FLOAT
+    (21) expression -> . STRING
+    (22) expression -> . CHAR_LITERAL
+    (23) expression -> . ID
+
+    LPAREN          shift and go to state 16
+    NUM             shift and go to state 17
+    FLOAT           shift and go to state 18
+    STRING          shift and go to state 19
+    CHAR_LITERAL    shift and go to state 20
+    ID              shift and go to state 21
+
+    expression                     shift and go to state 50
+
+state 42
+
+    (25) relational_operator -> EQ .
+
+    LPAREN          reduce using rule 25 (relational_operator -> EQ .)
+    NUM             reduce using rule 25 (relational_operator -> EQ .)
+    FLOAT           reduce using rule 25 (relational_operator -> EQ .)
+    STRING          reduce using rule 25 (relational_operator -> EQ .)
+    CHAR_LITERAL    reduce using rule 25 (relational_operator -> EQ .)
+    ID              reduce using rule 25 (relational_operator -> EQ .)
+
+
+state 43
+
+    (26) relational_operator -> NEQ .
+
+    LPAREN          reduce using rule 26 (relational_operator -> NEQ .)
+    NUM             reduce using rule 26 (relational_operator -> NEQ .)
+    FLOAT           reduce using rule 26 (relational_operator -> NEQ .)
+    STRING          reduce using rule 26 (relational_operator -> NEQ .)
+    CHAR_LITERAL    reduce using rule 26 (relational_operator -> NEQ .)
+    ID              reduce using rule 26 (relational_operator -> NEQ .)
+
+
+state 44
+
+    (27) relational_operator -> LT .
+
+    LPAREN          reduce using rule 27 (relational_operator -> LT .)
+    NUM             reduce using rule 27 (relational_operator -> LT .)
+    FLOAT           reduce using rule 27 (relational_operator -> LT .)
+    STRING          reduce using rule 27 (relational_operator -> LT .)
+    CHAR_LITERAL    reduce using rule 27 (relational_operator -> LT .)
+    ID              reduce using rule 27 (relational_operator -> LT .)
+
+
+state 45
+
+    (28) relational_operator -> GT .
+
+    LPAREN          reduce using rule 28 (relational_operator -> GT .)
+    NUM             reduce using rule 28 (relational_operator -> GT .)
+    FLOAT           reduce using rule 28 (relational_operator -> GT .)
+    STRING          reduce using rule 28 (relational_operator -> GT .)
+    CHAR_LITERAL    reduce using rule 28 (relational_operator -> GT .)
+    ID              reduce using rule 28 (relational_operator -> GT .)
+
+
+state 46
+
+    (29) relational_operator -> LTE .
+
+    LPAREN          reduce using rule 29 (relational_operator -> LTE .)
+    NUM             reduce using rule 29 (relational_operator -> LTE .)
+    FLOAT           reduce using rule 29 (relational_operator -> LTE .)
+    STRING          reduce using rule 29 (relational_operator -> LTE .)
+    CHAR_LITERAL    reduce using rule 29 (relational_operator -> LTE .)
+    ID              reduce using rule 29 (relational_operator -> LTE .)
+
+
+state 47
+
+    (30) relational_operator -> GTE .
+
+    LPAREN          reduce using rule 30 (relational_operator -> GTE .)
+    NUM             reduce using rule 30 (relational_operator -> GTE .)
+    FLOAT           reduce using rule 30 (relational_operator -> GTE .)
+    STRING          reduce using rule 30 (relational_operator -> GTE .)
+    CHAR_LITERAL    reduce using rule 30 (relational_operator -> GTE .)
+    ID              reduce using rule 30 (relational_operator -> GTE .)
+
+
+state 48
+
+    (10) statement -> IF LPAREN condition RPAREN block . else_clause
+    (12) else_clause -> . ELSE block
+    (13) else_clause -> . empty
+    (31) empty -> .
+
+    ELSE            shift and go to state 52
+    FIM             reduce using rule 31 (empty -> .)
+    ID              reduce using rule 31 (empty -> .)
+    PRINT           reduce using rule 31 (empty -> .)
+    INPUT           reduce using rule 31 (empty -> .)
+    IF              reduce using rule 31 (empty -> .)
+    INT             reduce using rule 31 (empty -> .)
+    CHAR            reduce using rule 31 (empty -> .)
+    RBRACE          reduce using rule 31 (empty -> .)
+
+    else_clause                    shift and go to state 51
+    empty                          shift and go to state 53
+
+state 49
+
+    (11) block -> LBRACE . statements RBRACE
+    (5) statements -> . statements statement
+    (6) statements -> . statement
+    (2) statement -> . type ID ATRIB expression
+    (7) statement -> . ID ATRIB expression
+    (8) statement -> . PRINT expression
+    (9) statement -> . INPUT LPAREN RPAREN
+    (10) statement -> . IF LPAREN condition RPAREN block else_clause
+    (3) type -> . INT
+    (4) type -> . CHAR
+
+    ID              shift and go to state 5
+    PRINT           shift and go to state 6
+    INPUT           shift and go to state 7
+    IF              shift and go to state 8
+    INT             shift and go to state 9
+    CHAR            shift and go to state 10
+
+    statements                     shift and go to state 54
+    statement                      shift and go to state 3
+    type                           shift and go to state 4
+
+state 50
+
+    (24) condition -> expression relational_operator expression .
+    (14) expression -> expression . SOMA expression
+    (15) expression -> expression . SUB expression
+    (16) expression -> expression . MULT expression
+    (17) expression -> expression . DIV expression
+
+    RPAREN          reduce using rule 24 (condition -> expression relational_operator expression .)
+    SOMA            shift and go to state 26
+    SUB             shift and go to state 27
+    MULT            shift and go to state 28
+    DIV             shift and go to state 29
+
+
+state 51
+
+    (10) statement -> IF LPAREN condition RPAREN block else_clause .
+
+    FIM             reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    ID              reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    PRINT           reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    INPUT           reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    IF              reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    INT             reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    CHAR            reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+    RBRACE          reduce using rule 10 (statement -> IF LPAREN condition RPAREN block else_clause .)
+
+
+state 52
+
+    (12) else_clause -> ELSE . block
+    (11) block -> . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 49
+
+    block                          shift and go to state 55
+
+state 53
+
+    (13) else_clause -> empty .
+
+    FIM             reduce using rule 13 (else_clause -> empty .)
+    ID              reduce using rule 13 (else_clause -> empty .)
+    PRINT           reduce using rule 13 (else_clause -> empty .)
+    INPUT           reduce using rule 13 (else_clause -> empty .)
+    IF              reduce using rule 13 (else_clause -> empty .)
+    INT             reduce using rule 13 (else_clause -> empty .)
+    CHAR            reduce using rule 13 (else_clause -> empty .)
+    RBRACE          reduce using rule 13 (else_clause -> empty .)
+
+
+state 54
+
+    (11) block -> LBRACE statements . RBRACE
+    (5) statements -> statements . statement
+    (2) statement -> . type ID ATRIB expression
+    (7) statement -> . ID ATRIB expression
+    (8) statement -> . PRINT expression
+    (9) statement -> . INPUT LPAREN RPAREN
+    (10) statement -> . IF LPAREN condition RPAREN block else_clause
+    (3) type -> . INT
+    (4) type -> . CHAR
+
+    RBRACE          shift and go to state 56
+    ID              shift and go to state 5
+    PRINT           shift and go to state 6
+    INPUT           shift and go to state 7
+    IF              shift and go to state 8
+    INT             shift and go to state 9
+    CHAR            shift and go to state 10
+
+    statement                      shift and go to state 12
+    type                           shift and go to state 4
+
+state 55
+
+    (12) else_clause -> ELSE block .
+
+    FIM             reduce using rule 12 (else_clause -> ELSE block .)
+    ID              reduce using rule 12 (else_clause -> ELSE block .)
+    PRINT           reduce using rule 12 (else_clause -> ELSE block .)
+    INPUT           reduce using rule 12 (else_clause -> ELSE block .)
+    IF              reduce using rule 12 (else_clause -> ELSE block .)
+    INT             reduce using rule 12 (else_clause -> ELSE block .)
+    CHAR            reduce using rule 12 (else_clause -> ELSE block .)
+    RBRACE          reduce using rule 12 (else_clause -> ELSE block .)
+
+
+state 56
+
+    (11) block -> LBRACE statements RBRACE .
+
+    ELSE            reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    FIM             reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    ID              reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    PRINT           reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    INPUT           reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    IF              reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    INT             reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    CHAR            reduce using rule 11 (block -> LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 11 (block -> LBRACE statements RBRACE .)
+
